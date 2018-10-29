@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Matrix4
+namespace MatrixMultiplikation
 {
     class Matrix
     {
 
-        public void MultiplicationMatrix(int[,] mas1, int[,] mas2, int mas1height, int mas2width)
+        public void MatrixMultiplication(int[,] mas1, int[,] mas2, int mas1height, int mas2width)
         {
             int[,] mas3 = new int[mas1height, mas2width];
 
@@ -70,7 +70,7 @@ namespace Matrix4
             Console.WriteLine("Введите значения первой матрицы построчно через пробел: ");
 
             int[,] substring = new int[mas1height, mas2width];
-            
+
             for (int i = 0; i < mas1height; i++)
             {
                 string str1 = Console.ReadLine();
@@ -86,7 +86,7 @@ namespace Matrix4
             Console.WriteLine("Введите значения второй матрицы построчно через пробел: ");
 
             int[,] substring2 = new int[mas1height, mas2width];
-            
+
             for (int i = 0; i < mas1height; i++)
             {
                 string str2 = Console.ReadLine();
@@ -103,14 +103,12 @@ namespace Matrix4
 
             // Вызов метода
             Matrix result = new Matrix();
-            result.MultiplicationMatrix(mas1, mas2, mas1height, mas2width);
+            result.MatrixMultiplication(mas1, mas2, mas1height, mas2width);
 
             End:
             Console.ReadLine();
 
         }
-            
-     }
 
-    
+    }
 }
