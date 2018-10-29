@@ -37,22 +37,21 @@ namespace MatrixMultiplikation
         }
 
     }
-
     class Program
     {
         static void Main(string[] args)
         {
             // Определение и создание матриц
-            Console.WriteLine("Введите количество строк первой матрицы: ");
+            Console.WriteLine("Введите высоту первой матрицы: ");
             int mas1height = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите количество столбцов первой матрицы: ");
+            Console.WriteLine("Введите длину первой матрицы: ");
             int mas1width = Convert.ToInt32(Console.ReadLine());
 
             int[,] mas1 = new int[mas1height, mas1width];
 
-            Console.WriteLine("Введите количество строк второй матрицы: ");
+            Console.WriteLine("Введите высоту второй матрицы: ");
             int mas2height = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите количество столбцов второй матрицы: ");
+            Console.WriteLine("Введите длину второй матрицы: ");
             int mas2width = Convert.ToInt32(Console.ReadLine());
 
             int[,] mas2 = new int[mas2height, mas2width];
@@ -64,43 +63,38 @@ namespace MatrixMultiplikation
                 Console.WriteLine("Умножение невозможно.");
                 goto End;
             }
-
             // Заполнение матриц значениями
-
-            Console.WriteLine("Введите значения первой матрицы построчно через пробел: ");
-
-            int[,] substring = new int[mas1height, mas2width];
-
+             Console.WriteLine("Введите значения первой матрицы построчно через пробел: ");          
             for (int i = 0; i < mas1height; i++)
             {
                 string str1 = Console.ReadLine();
                 int[] array = str1.Split(' ').Select(x => int.Parse(x)).ToArray();
-
-
+                if (mas1width != array.Length)
+                {
+                    Console.WriteLine("Несоответствие длины первой матрицы");
+                    goto End;
+                }
                 for (int k = 0; k < array.Length; k++)
                 {
-                    substring[i, k] = array[k];
+                    mas1[i, k] = array[k];
                 }
             }
-
+           
             Console.WriteLine("Введите значения второй матрицы построчно через пробел: ");
-
-            int[,] substring2 = new int[mas1height, mas2width];
-
-            for (int i = 0; i < mas1height; i++)
+            for (int i = 0; i < mas2height; i++)
             {
                 string str2 = Console.ReadLine();
                 int[] array2 = str2.Split(' ').Select(x => int.Parse(x)).ToArray();
-
-
+                if (mas2width != array2.Length)
+                {
+                    Console.WriteLine("Несоответствие длины второй матрицы");
+                    goto End;
+                }
                 for (int k = 0; k < array2.Length; k++)
                 {
-                    substring2[i, k] = array2[k];
+                    mas2[i, k] = array2[k];
                 }
             }
-
-
-
             // Вызов метода
             Matrix result = new Matrix();
             result.MatrixMultiplication(mas1, mas2, mas1height, mas2width);
